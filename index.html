@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hug App 💕</title>
+  <style>
+    body {
+      background-color: #ffe6f0;
+      font-family: "Prompt", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .val-container {
+      text-align: center;
+      padding: 20px;
+    }
+    .val-gif {
+      max-width: 250px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .val-text {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #d63384;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .button {
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 18px;
+    }
+    .yes-button {
+      background-color: #ff4da6;
+      color: white;
+      font-weight: bold;
+    }
+    .no-button {
+      background-color: #f8d7da;
+      color: #721c24;
+      font-weight: bold;
+    }
+    .button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="val-container" id="app">
+    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif" alt="bear-asking" class="val-gif" />
+    <div class="val-text">รักเรามั้ยค้าบ มาให้เรากอดหน่อยค้าบ</div>
+    <div class="btn-group">
+      <button id="yesBtn" class="button yes-button">กอด</button>
+      <button id="noBtn" class="button no-button">ไม่</button>
+    </div>
+  </div>
+
+  <script>
+    const phrases = [
+      "ไม่",
+      "กอดเดี๋ยวนี้นะคะ",
+      "ทำไมต้าวยังม่ะกอด",
+      "กอด เดี๋ยว นี้!!!!!",
+    ];
+
+    let noCount = 0;
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const app = document.getElementById("app");
+
+    yesBtn.addEventListener("click", () => {
+      app.innerHTML = `
+        <img src="https://media.giphy.com/media/0OgdJVNjbcIifqSb7U/giphy.gif" alt="yes-pic" class="val-gif" />
+        <div class="val-text">กอดๆ จุฟๆ คนเก่งของเค้า ♥</div>
+      `;
+    });
+
+    noBtn.addEventListener("click", () => {
+      noCount++;
+      const phrase = phrases[Math.min(noCount, phrases.length - 1)];
+      noBtn.textContent = phrase;
+      yesBtn.style.fontSize = (noCount * 20 + 16) + "px";
+    });
+  </script>
+</body>
+</html>
